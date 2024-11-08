@@ -30,7 +30,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local development for Vue.js or React
 ]
 
-ALLOWED_HOSTS = ["https://liveinnbobackend-production.up.railway.app", "localhost"]
+ALLOWED_HOSTS = ["liveinnbobackend-production.up.railway.app", "localhost"]
 
 
 
