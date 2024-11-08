@@ -5,6 +5,7 @@ charset-normalizer==3.3.2
 dj-rest-auth==6.0.0
 Django==5.1.1
 django-allauth==65.0.2
+django-cors-headers==4.6.0
 django-crispy-forms==2.3
 django-qr-code==4.1.0
 django-rest-auth==0.9.5
