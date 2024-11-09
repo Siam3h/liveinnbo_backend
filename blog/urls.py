@@ -7,5 +7,4 @@ urlpatterns = [
     path('category/<str:category>/', views.category_list, name='category-list'),
     path('categories/', views.categories_list, name='categories-list'),
     path('search/', views.search_blogs, name='blog-search'),
-    path('detail/<slug:slug>/', views.blogpost_detail_view, name='blog-detail-view'),
 ]
