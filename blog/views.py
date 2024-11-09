@@ -85,21 +85,3 @@ def search_blogs(request):
         "message": message
     })
 
-# Retrieve blog details by slug with previous and next blog
-@api_view(['GET'])
-@permission_classes([AllowAny])
-@cache_page(60 * 20)
-def blogpost_detail_view(request, slug):
-    blog = get_object_or_404(Blog, slug=slug, is_approved=True)
-    previous_blog = Blog.objects.filter(is_approved=True, time__lt=blog.time).order_by('-time').first()
-    next_blog = Blog.objects.filter(is_approved=True, time__gt=blog.time).order_by('time').first()
-
-    serializer = BlogSerializer(blog)
-    previous_serializer = BlogSerializer(previous_blog) if previous_blog else None
-    next_serializer = BlogSerializer(next_blog) if next_blog else None
-
-    return Response({
-        "blog": serializer.data,
-        "previous_blog": previous_serializer.data if previous_serializer else None,
-        "next_blog": next_serializer.data if next_serializer else None,
-    })

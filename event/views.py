@@ -28,8 +28,9 @@ class EventListCreateView(generics.ListCreateAPIView):
 @method_decorator(cache_page(60 * 5), name='dispatch')
 class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
+    lookup_field = 'id'
     serializer_class = EventSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 # Retrieve events filtered by category
 @api_view(['GET'])
