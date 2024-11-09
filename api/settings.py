@@ -34,10 +34,10 @@ CORS_ALLOW_HEADERS = "*"
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS =  'http://liveinnbobackend-production.up.railway.app',
+CSRF_TRUSTED_ORIGINS =  'https://liveinnbobackend-production.up.railway.app',
 
 CORS_ORIGIN_WHITELIST = [
-       'http://liveinnbobackend-production.up.railway.app', 
+       'https://liveinnbobackend-production.up.railway.app', 
        'http://localhost:8080',
       ]
 
