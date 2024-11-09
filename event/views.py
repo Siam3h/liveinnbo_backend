@@ -80,17 +80,3 @@ def search_events(request):
 
     return paginator.get_paginated_response({"results": serializer.data, "message": message})
 
-# Retrieve event details by ID
-@api_view(['GET'])
-@permission_classes([AllowAny])
-@cache_page(60 * 5)
-def event_detail_view(request, event_id):
-    event = get_object_or_404(Event, id=event_id)
-    serializer = EventSerializer(event)
-    return Response(serializer.data, status=status.HTTP_200_OK)
-
-# The new DRF views implement the same logic as the original views, with enhancements for RESTful APIs:
-# - API views are cached using the `cache_page` decorator to minimize server load.
-# - Pagination is done using DRF's `PageNumberPagination`.
-# - `EventListCreateView` and `EventDetailView` provide class-based views for listing, creating, updating, and deleting events.
-# - Function-based views (`category_list`, `categories_list`, `search_events`, `event_detail_view`) provide flexibility for category filtering, searching, and retrieving event details.
