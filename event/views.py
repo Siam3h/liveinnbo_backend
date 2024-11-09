@@ -25,7 +25,7 @@ class EventListCreateView(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
 # Retrieve, update, or delete an event by ID
-@method_decorator(cache_page(60 * 20), name='dispatch')
+@method_decorator(cache_page(60 * 5), name='dispatch')
 class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -34,7 +34,7 @@ class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
 # Retrieve events filtered by category
 @api_view(['GET'])
 @permission_classes([AllowAny])
-@cache_page(60 * 20)
+@cache_page(60 * 5)
 def category_list(request, category):
     events = Event.objects.filter(category=category).order_by('-created_at')
     if not events:
@@ -48,7 +48,7 @@ def category_list(request, category):
 # Retrieve all distinct categories
 @api_view(['GET'])
 @permission_classes([AllowAny])
-@cache_page(60 * 20)
+@cache_page(60 * 10)
 def categories_list(request):
     categories = Event.objects.values('category').distinct().order_by('category')
     return Response({'categories': list(categories)}, status=status.HTTP_200_OK)
@@ -56,7 +56,6 @@ def categories_list(request):
 # Search for events
 @api_view(['GET'])
 @permission_classes([AllowAny])
-@cache_page(60 * 20)
 def search_events(request):
     query = request.GET.get('q', '')
     if not query:
@@ -84,7 +83,7 @@ def search_events(request):
 # Retrieve event details by ID
 @api_view(['GET'])
 @permission_classes([AllowAny])
-@cache_page(60 * 20)
+@cache_page(60 * 5)
 def event_detail_view(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     serializer = EventSerializer(event)

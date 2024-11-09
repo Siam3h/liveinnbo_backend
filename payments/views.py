@@ -37,7 +37,7 @@ def process_payment(request, event_id):
         "email": email,
         "amount": int(amount),
         "reference": transaction.ref,
-        "callback_url": "https://yourdomain.com/payments/verify_payment/"
+        "callback_url": "https://liveinnairobi.vercel.app/payments/verify_payment/"
     }
 
     url = "https://api.paystack.co/transaction/initialize"
