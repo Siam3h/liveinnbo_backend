@@ -25,10 +25,9 @@ class EventListCreateView(generics.ListCreateAPIView):
     permission_classes = [AllowAny]
 
 # Retrieve, update, or delete an event by ID
-@method_decorator(cache_page(60 * 5), name='dispatch')
+@method_decorator(cache_page(60 * 5))
 class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
-    lookup_field = 'id'
     serializer_class = EventSerializer
     permission_classes = [AllowAny]
 
