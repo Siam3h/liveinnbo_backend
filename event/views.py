@@ -24,12 +24,16 @@ class EventListCreateView(generics.ListCreateAPIView):
     pagination_class = EventPagination
     permission_classes = [AllowAny]
 
-# Retrieve, update, or delete an event by ID
-@method_decorator(cache_page(60 * 5))
 class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     permission_classes = [AllowAny]
+
+    # Apply the cache_page decorator only to the GET method
+    @method_decorator(cache_page(60 * 5))  # Cache the GET request for 5 minutes
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
 
 # Retrieve events filtered by category
 @api_view(['GET'])
