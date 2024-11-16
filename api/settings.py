@@ -30,8 +30,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local development for Vue.js or React
 ]
 
-CORS_ALLOW_HEADERS = "*"
-
 CORS_ORIGIN_ALLOW_ALL = True
 
 CSRF_TRUSTED_ORIGINS =  'https://liveinnbobackend-production.up.railway.app',
@@ -42,6 +40,20 @@ CORS_ORIGIN_WHITELIST = [
       ]
 
 ALLOWED_HOSTS = ["liveinnbobackend-production.up.railway.app", "localhost"]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
+
 
 
 
@@ -63,7 +75,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-     'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
