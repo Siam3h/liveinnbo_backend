@@ -30,14 +30,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Local development for Vue.js or React
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS =  'https://liveinnbo-backend.onrender.com',
+CSRF_TRUSTED_ORIGINS =  ['https://liveinnbo-backend.onrender.com']
 
-CORS_ORIGIN_WHITELIST = [
-       'https://liveinnbo-backend.onrender.com', 
-       'http://localhost:8080',
-      ]
+#CORS_ORIGIN_WHITELIST = [
+      # 'https://liveinnbo-backend.onrender.com', 
+       #'http://localhost:8080',
+      #]
 
 ALLOWED_HOSTS = ["liveinnbo-backend.onrender.com", "localhost"]
 
