@@ -32,14 +32,14 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS =  'https://liveinnbobackend-production.up.railway.app',
+CSRF_TRUSTED_ORIGINS =  'https://liveinnbo-backend.onrender.com',
 
 CORS_ORIGIN_WHITELIST = [
-       'https://liveinnbobackend-production.up.railway.app', 
+       'https://liveinnbo-backend.onrender.com', 
        'http://localhost:8080',
       ]
 
-ALLOWED_HOSTS = ["liveinnbobackend-production.up.railway.app", "localhost"]
+ALLOWED_HOSTS = ["liveinnbo-backend.onrender.com", "localhost"]
 
 CORS_ALLOW_METHODS = [
     'GET',

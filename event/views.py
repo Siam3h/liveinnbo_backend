@@ -24,6 +24,7 @@ class EventListCreateView(generics.ListCreateAPIView):
     pagination_class = EventPagination
     permission_classes = [AllowAny]
 
+
 class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
@@ -35,7 +36,7 @@ class EventDetailView(generics.RetrieveUpdateDestroyAPIView):
         return super().get(request, *args, **kwargs)
 
 
-# Retrieve events filtered by category
+# Events filtered by category
 @api_view(['GET'])
 @permission_classes([AllowAny])
 @cache_page(60 * 5)
